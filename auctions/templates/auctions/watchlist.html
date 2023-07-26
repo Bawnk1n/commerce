@@ -1,0 +1,23 @@
+{% extends 'auctions/layout.html' %}
+
+{% block body %}
+
+<h2>Your Watchlist:</h2>
+{% for item in watchlist %}
+  
+    <h4><a href="{% url 'listing' item.auction.id %}" >{{item.auction.title}}</a></h4>
+    {% if item.highest_bid %}
+    <h6>Current bid: {{item.highest_bid}}</h6>
+    {% else %}
+    <h6>No bids yet</h6>
+    {% endif %}
+    <form action="{% url 'watchlist' user.id %}" method="post">
+      {% csrf_token %}
+      <button type="submit" name="remove" value="{{item.auction.id}}">Remove From Watchlist</button>
+    </form>
+  
+  {% empty %}
+  <p>No items to show</p>
+{% endfor %}
+
+{% endblock %}

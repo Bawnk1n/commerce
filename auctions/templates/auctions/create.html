@@ -1,0 +1,38 @@
+{% extends 'auctions/layout.html' %}
+
+{% block body %} 
+
+<h1 class="create-header">Create New Listing</h1>
+
+{% if user.is_authenticated %}
+<form action="{% url 'create' %}" method="post" enctype="multipart/form-data" class="form">
+  {% csrf_token %}
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-default">Title</span>
+    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="title" required>
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-default">Description</span>
+    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="content" required>
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-default">Starting Price</span>
+    <input type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="starting_price" required>
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-default">Category</span>
+    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="category">
+  </div>
+  <!-- <input type="text" name="title" placeholder="title" required> -->
+  <!-- <input type="text" name="content" placeholder="description" required> -->
+  <!-- <input type="number" name="starting_price" placeholder="starting price" required > -->
+  <!-- <input type="text" name="category" placeholder="category" > -->
+  <label for="image">Upload an image</label>
+  <input type="file" name="image" id='image' accept="image/*">
+  <input type="submit" class="btn btn-primary create-submit">
+</form>
+{% else %}
+<h4>Sign in to create a listing</h4>
+{% endif %}
+
+{% endblock %}

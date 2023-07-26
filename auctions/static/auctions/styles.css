@@ -1,0 +1,125 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1, h2 {
+    font-family: Helvetica, sans-serif;
+    letter-spacing: 1px;
+}
+
+h5 {
+    font-weight: bolder;
+    letter-spacing: 1px;
+}
+
+.side-by-side {
+    display: flex;
+}
+
+#main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+#main-header {
+    margin: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+#active-listings {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: beige;
+    border-right: 1px solid grey;
+    border-left: 1px solid grey;
+    padding-top:1rem;
+    width: 80%;
+}
+
+#listing-card {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+    border: 1px solid lightgrey;
+    flex-wrap: wrap;
+    
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    text-decoration: none;
+    color:black;
+    text-shadow: 1px 1px 1px grey;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    margin: .25rem 0;
+}
+
+.card {
+    margin: .5rem;
+}
+
+.nav-line {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-img-top {
+    max-height: 300px;
+    max-width: 300px;
+}
+
+.create-header {
+    text-align: center;
+}
+
+.create-submit {
+    max-width: 150px;
+}
+
+#index-header-window {
+    width:100%;
+    border-bottom: 1px solid lightgrey;
+    text-align: center;
+}
+
+#active-listings-header {
+    font-weight: 500;
+}
+
+/* Listing Page */
+
+#listing-window {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.listing-profile-image {
+    max-width: 400px;
+    max-height: 450px;
+    border-radius: 20px;
+    margin: 2rem;
+}
+
+.listing-description {
+    margin: 2rem;
+    border-bottom: 1px solid grey;
+}

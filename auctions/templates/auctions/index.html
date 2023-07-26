@@ -1,0 +1,41 @@
+{% extends "auctions/layout.html" %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+    <div id="main">
+
+        <div id="index-header-window">
+            <h2 id="active-listings-header">Active Listings</h2>
+        </div>
+
+        <div id="active-listings">
+
+            {% for listing in listings %}
+                {% if listing.is_open %}
+
+                  <div class="card" style="width: 18rem;">
+                    <img src="{{listing.image.url}}" class="card-img-top" alt="product profile picture">
+                    <div class="card-body">
+                      <h5 class="card-title">{{listing.title}}</h5>
+                      <p class="card-text">{{listing.description}}</p>
+                      {% if listing.highest_bid %}
+                      <p class="card-text"><small class="text-body-secondary">Current bid: ${{listing.highest_bid}}</small></p>
+                      {% else %}
+                      <p class="card-text"><small>Starting price: ${{listing.starting_price}}</small></p>
+                      {% endif %}
+                      <a href="{% url 'listing' listing.id %}" class="btn btn-primary">View listing</a>
+                    </div>
+                  </div>
+                
+                {% endif %}
+
+                
+            {% empty %}
+            <p>No listings available.</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
