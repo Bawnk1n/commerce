@@ -2,10 +2,14 @@
 
 {% block body %}
 
-<h2>Your Watchlist:</h2>
+<div class="main-window">
+  <div class="header-window">
+    <h2>Your Watchlist:</h2>
+  </div>
+  <div class="content-window">
 {% for item in watchlist %}
   
-    <h4><a href="{% url 'listing' item.auction.id %}" >{{item.auction.title}}</a></h4>
+    <!-- <h4><a href="{% url 'listing' item.auction.id %}" >{{item.auction.title}}</a></h4>
     {% if item.highest_bid %}
     <h6>Current bid: {{item.highest_bid}}</h6>
     {% else %}
@@ -14,10 +18,29 @@
     <form action="{% url 'watchlist' user.id %}" method="post">
       {% csrf_token %}
       <button type="submit" name="remove" value="{{item.auction.id}}">Remove From Watchlist</button>
-    </form>
+    </form> -->
+    <div class="card" style="width: 18rem;">
+      <img src="{{item.auction.image.url}}" class="card-img-top" alt="product profile picture">
+      <div class="card-body">
+        <h5 class="card-title">{{item.auction.title}}</h5>
+        <p class="card-text">{{item.auction.description}}</p>
+        {% if item.highest_bid %}
+        <p class="card-text"><small class="text-body-secondary">Current bid: ${{item.highest_bid}}</small></p>
+        {% else %}
+        <p class="card-text"><small>Starting price: ${{item.auction.starting_price}}</small></p>
+        {% endif %}
+        <a href="{% url 'listing' item.auction.id %}" class="btn btn-primary">View listing</a>
+        <form action="{% url 'watchlist' user.id %}" method="post">
+          {% csrf_token %}
+          <button type="submit" name="remove" value="{{item.auction.id}}" class="btn btn-danger">Remove From Watchlist</button>
+        </form>
+      </div>
+    </div>
   
   {% empty %}
   <p>No items to show</p>
 {% endfor %}
+</div>
+</div>
 
 {% endblock %}

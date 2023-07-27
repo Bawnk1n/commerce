@@ -14,7 +14,8 @@ def index(request):
     listing_with_highest_bid = listings.annotate(highest_bid = Subquery(highest_bid_subquery.values('amount')[:1]))
 
     return render(request, "auctions/index.html", {
-        "listings": listing_with_highest_bid
+        "listings": listing_with_highest_bid,
+        "header": "Active Listings" 
     })
 
 
@@ -176,6 +177,7 @@ def category(request, category):
     listings = AuctionListings.objects.filter(category=category, is_open=True).all()
     return render(request, 'auctions/category.html', {
         "listings":listings,
-        "category":category
+        "category":category,
+        "header": "Active Listings"
     })
     

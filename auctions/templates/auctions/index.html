@@ -5,13 +5,19 @@
 {% endblock %}
 
 {% block body %}
-    <div id="main">
-
-        <div id="index-header-window">
-            <h2 id="active-listings-header">Active Listings</h2>
+    <div class="main-window">
+        {% if category %}
+        <div class="header-window">
+            <h2 id="active-listings-header">{{header}}: {{category}}</h2>
         </div>
+        {% else %}
+        <div class="header-window">
+          <h2 id="active-listings-header">{{header}}</h2>
+      </div>
+      {% endif %}
+      
 
-        <div id="active-listings">
+        <div class="content-window">
 
             {% for listing in listings %}
                 {% if listing.is_open %}
